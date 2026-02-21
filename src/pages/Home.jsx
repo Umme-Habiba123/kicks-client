@@ -1,9 +1,10 @@
 import React from 'react';
+import DoItRight from './Home/DoItRight';
 
 const Home = () => {
     return (
         <div>
-            <h1>This is Home</h1>
+          <DoItRight></DoItRight>
         </div>
     );
 };
