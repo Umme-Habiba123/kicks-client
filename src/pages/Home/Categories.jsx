@@ -1,10 +1,10 @@
-// Categories.jsx
+
 import React, { useState } from 'react';
 import lifestyleShoe from '../../assets/left1.png';
 import basketballShoe from '../../assets/right1.png';
 import { FaArrowUpRightFromSquare } from 'react-icons/fa6';
 
-// ── Add more categories here ──────────────────────────────────────────────────
+
 const allCategories = [
   { id: 1, label: 'LIFESTYLE\nSHOES',    image: lifestyleShoe },
   { id: 2, label: 'BASKETBALL\nSHOES',  image: basketballShoe },
@@ -21,7 +21,7 @@ const allCategories = [
   {
     id: 5,
     label: 'CASUAL\nSHOES',
-    image: 'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/68ae7ea7849b43eca70aac1e00f5146d_9366/Stan_Smith_Shoes_White_FX5502_01_standard.jpg',
+    image: 'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/fbaf991a78bc4896a3e9ad7800abcec2_9366/Ultraboost_Light_Shoes_White_HQ6351_01_standard.jpg',
   },
   {
     id: 6,
@@ -29,12 +29,11 @@ const allCategories = [
     image: 'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/b2d239c19f814ffd9a78ad7d00ab3199_9366/Predator_Accuracy.1_Firm_Ground_Boots_White_GW4587_01_standard.jpg',
   },
 ];
-// ─────────────────────────────────────────────────────────────────────────────
 
 export default function Categories() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Show 2 cards at a time, peek of 3rd card visible on right
+ 
   const maxIndex = Math.max(0, allCategories.length - 2);
 
   const handlePrev = () => setCurrentIndex((p) => Math.max(p - 1, 0));
@@ -46,7 +45,7 @@ export default function Categories() {
     
       <div className="rounded-2xl sm:rounded-3xl overflow-hidden bg-[#1a1a1a]">
 
-        {/* ── TOP BAR: CATEGORIES title + nav arrows ── */}
+ 
         <div className="flex items-center justify-between px-5 sm:px-8 py-4 sm:py-5">
           <h2
             className="text-white font-black uppercase tracking-widest"
@@ -59,7 +58,7 @@ export default function Categories() {
             CATEGORIES
           </h2>
 
-          {/* Nav arrows */}
+    
           <div className="flex gap-2 sm:gap-3">
             <button
               onClick={handlePrev}
@@ -99,22 +98,19 @@ export default function Categories() {
           </div>
         </div>
 
-        {/* ── CARDS AREA: cream bg, left rounded, right overflows ── */}
         <div
           className="overflow-hidden mx-10"
           style={{
-            /* left side rounded, right side straight — card area */
+          
             borderRadius: '0px 20px 0px 20px',
             background: '#f0ede8',
-            marginLeft: '0',          /* flush with black on the left */
+            marginLeft: '0',          
           }}
         >
-          {/* Sliding track */}
+        
           <div
             className="flex transition-transform duration-500 ease-in-out"
             style={{
-              /* Each card = 50% of the cards-area width.
-                 We also show ~15px peek of the next card on the right. */
               transform: `translateX(calc(-${currentIndex} * 50%))`,
             }}
           >
@@ -124,7 +120,6 @@ export default function Categories() {
                 className="flex-none"
                 style={{ width: '50%', minWidth: '50%' }}
               >
-                {/* Card — relative so label overlays bottom */}
                 <div
                   className="relative overflow-hidden"
                   style={{
@@ -135,7 +130,7 @@ export default function Categories() {
                     background: '#f0ede8',
                   }}
                 >
-                  {/* Shoe image fills the full card */}
+               
                   <img
                     src={cat.image}
                     alt={cat.label.replace('\n', ' ')}
@@ -145,7 +140,7 @@ export default function Categories() {
                     onError={(e) => { e.target.style.opacity = '0.25'; }}
                   />
 
-                  {/* Label + Arrow pinned to bottom */}
+              
                   <div
                     className="absolute bottom-0 left-0 right-0
                                flex items-end justify-between"
