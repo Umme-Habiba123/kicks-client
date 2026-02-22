@@ -30,7 +30,7 @@ const TikTokIcon = () => (
 export default function Footer() {
   return (
     <footer className="w-9/12 mx-auto ">
-    <div className='bg-[#4A69E2]'>
+    <div className='bg-[#4A69E2] rounded-t-3xl'>
          <div>
          <div
         className="w-full relative overflow-hidden"
@@ -40,7 +40,7 @@ export default function Footer() {
           padding: 'clamp(28px, 5vw, 52px) clamp(20px, 5vw, 56px)',
         }}
       >
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8">
+        <div className="flex flex-col sm:flex-row items-start  sm:items-center justify-between gap-8">
 
           <div className="flex-1 max-w-lg">
             <h2
