@@ -37,7 +37,6 @@ export default function Cart() {
 
   return (
     <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-
       <div className="pt-8 pb-4">
         <p
           className="font-black text-[#1a1a1a] text-sm sm:text-base"
@@ -46,8 +45,8 @@ export default function Cart() {
           Saving to celebrate
         </p>
         <p className="text-gray-500 text-xs sm:text-sm mt-0.5">
-          Enjoy up to 60% off thousands of styles during the End of Year
-          sale - while supplies last. No code needed.
+          Enjoy up to 60% off thousands of styles during the End of Year sale -
+          while supplies last. No code needed.
         </p>
         <p className="text-xs sm:text-sm mt-1 text-gray-600">
           <button className="underline font-semibold hover:opacity-70 transition">
@@ -73,8 +72,7 @@ export default function Cart() {
               Your Bag
             </h2>
             <p className="text-gray-400 text-xs sm:text-sm mb-5">
-              Items in your bag not reserved- check out now to make them
-              yours.
+              Items in your bag not reserved- check out now to make them yours.
             </p>
 
             {/* Empty */}
@@ -94,9 +92,7 @@ export default function Cart() {
 
             {items.map((item, idx) => (
               <div key={item.id}>
-                {idx > 0 && (
-                  <div className="border-t border-gray-100 my-5" />
-                )}
+                {idx > 0 && <div className="border-t border-gray-100 my-5" />}
 
                 <div className="flex gap-4 sm:gap-5">
                   {/* Image */}
@@ -111,7 +107,9 @@ export default function Cart() {
                       src={item.image}
                       alt={item.name}
                       className="w-full h-full object-contain p-2"
-                      onError={(e) => { e.target.style.opacity = "0.3"; }}
+                      onError={(e) => {
+                        e.target.style.opacity = "0.3";
+                      }}
                     />
                   </div>
 
@@ -136,7 +134,9 @@ export default function Cart() {
                       </p>
                     </div>
 
-                    <p className="text-gray-500 text-xs sm:text-sm">{item.subtitle}</p>
+                    <p className="text-gray-500 text-xs sm:text-sm">
+                      {item.subtitle}
+                    </p>
                     <p className="text-gray-400 text-xs mb-3">{item.color}</p>
 
                     <div className="flex flex-wrap gap-4 mb-3 items-center">
@@ -148,16 +148,28 @@ export default function Cart() {
                         <div className="relative">
                           <select
                             value={item.size}
-                            onChange={(e) => updateSize(item.id, +e.target.value)}
+                            onChange={(e) =>
+                              updateSize(item.id, +e.target.value)
+                            }
                             className="appearance-none bg-transparent border-none outline-none cursor-pointer pl-0 pr-5 py-0 text-xs sm:text-sm text-gray-700"
                           >
                             {[6, 7, 8, 9, 10, 11, 12].map((s) => (
-                              <option key={s} value={s}>{s}</option>
+                              <option key={s} value={s}>
+                                {s}
+                              </option>
                             ))}
                           </select>
-                          <svg className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none"
-                            width="12" height="12" viewBox="0 0 24 24" fill="none"
-                            stroke="#555" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                          <svg
+                            className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none"
+                            width="12"
+                            height="12"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="#555"
+                            strokeWidth="2.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
                             <polyline points="6 9 12 15 18 9" />
                           </svg>
                         </div>
@@ -175,12 +187,22 @@ export default function Cart() {
                             className="appearance-none bg-transparent border-none outline-none cursor-pointer pl-0 pr-5 py-0 text-xs sm:text-sm text-gray-700"
                           >
                             {[1, 2, 3, 4, 5].map((q) => (
-                              <option key={q} value={q}>{q}</option>
+                              <option key={q} value={q}>
+                                {q}
+                              </option>
                             ))}
                           </select>
-                          <svg className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none"
-                            width="12" height="12" viewBox="0 0 24 24" fill="none"
-                            stroke="#555" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                          <svg
+                            className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none"
+                            width="12"
+                            height="12"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="#555"
+                            strokeWidth="2.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
                             <polyline points="6 9 12 15 18 9" />
                           </svg>
                         </div>
@@ -190,8 +212,16 @@ export default function Cart() {
                     {/* Heart + Bin icons */}
                     <div className="flex items-center gap-4">
                       <button className="text-gray-400 hover:text-red-400 transition-colors">
-                        <svg width="19" height="19" viewBox="0 0 24 24" fill="none"
-                          stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                        <svg
+                          width="19"
+                          height="19"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1.8"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
                           <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
                         </svg>
                       </button>
@@ -199,8 +229,16 @@ export default function Cart() {
                         onClick={() => removeItem(item.id)}
                         className="text-gray-400 hover:text-red-500 transition-colors"
                       >
-                        <svg width="19" height="19" viewBox="0 0 24 24" fill="none"
-                          stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                        <svg
+                          width="19"
+                          height="19"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1.8"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
                           <polyline points="3 6 5 6 21 6" />
                           <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
                           <path d="M10 11v6M14 11v6" />
@@ -215,7 +253,7 @@ export default function Cart() {
           </div>
         </div>
 
-        <div className="w-full lg:w-80 xl:w-96 flex-shrink-0 lg:sticky lg:top-6">
+        <div className="w-full lg:w-80 xl:w-96 flex-shrink-0 lg:sticky lg:top-6  ">
           <div className="bg-[#e8e6e1] rounded-2xl p-5 sm:p-6">
             <h2
               className="font-black text-[#1a1a1a] mb-5"
@@ -229,7 +267,9 @@ export default function Cart() {
 
             <div className="space-y-3 mb-6">
               <div className="flex justify-between text-sm text-gray-700">
-                <span>{items.length} ITEM{items.length !== 1 ? "S" : ""}</span>
+                <span>
+                  {items.length} ITEM{items.length !== 1 ? "S" : ""}
+                </span>
                 <span>${subtotal.toFixed(2)}</span>
               </div>
               <div className="flex justify-between text-sm text-gray-700">
@@ -278,13 +318,11 @@ export default function Cart() {
             )}
           </div>
         </div>
-
       </div>
 
       <div className="pb-10">
         <YouMayAlsoLike />
       </div>
-
     </div>
   );
 }

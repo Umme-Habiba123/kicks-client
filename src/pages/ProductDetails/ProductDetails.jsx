@@ -1,8 +1,17 @@
-// ProductDetails.jsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router";
 import YouMayAlsoLike from "../YouMayAlsoLike/YouMayAlsoLike";
+
+
+const PRODUCT_IMAGES = {
+  1: [
+    "https://i.ibb.co.com/G42dqwhQ/Rectangle-11.png", 
+    "https://i.ibb.co.com/G42dqwhQ/Rectangle-11.png",
+    "https://i.ibb.co.com/G42dqwhQ/Rectangle-11.png",
+    "https://i.ibb.co.com/Z6Nmy0mt/Rectangle-8.png",
+  ],
+};
 
 const SIZES = [38, 39, 40, 41, 42, 43, 44, 45, 46, 47];
 const COLORS = [
@@ -26,7 +35,7 @@ const ProductDetails = () => {
     setPageLoading(true);
     setActiveImg(0);
     axios
-      .get("http://localhost:5000/drops")
+      .get("https://kicks-server.vercel.app/drops")
       .then((res) => {
         const data = res.data;
         const found = data.find((d) => String(d.id) === String(id));
@@ -46,8 +55,10 @@ const ProductDetails = () => {
       <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#E7E7E3]">
         <div className="flex flex-col items-center gap-6">
           <div className="w-20 h-20 rounded-full border-4 border-indigo-200 border-t-[#4A69E2] animate-spin" />
-          <p className="font-black text-[#1a1a1a] uppercase tracking-widest"
-            style={{ fontFamily: "'Arial Black', Arial, sans-serif" }}>
+          <p
+            className="font-black text-[#1a1a1a] uppercase tracking-widest"
+            style={{ fontFamily: "'Arial Black', Arial, sans-serif" }}
+          >
             Loading Product...
           </p>
           <div className="w-48 h-1.5 bg-gray-200 rounded-full overflow-hidden">
@@ -60,11 +71,13 @@ const ProductDetails = () => {
 
   if (!drop) {
     return (
-      <div className="min-h-screen bg-[#E7E7E3] flex items-center justify-center">
+      <div className="min-h-screen bg-[#E7E7E3] flex items-center justify-center px-4">
         <div className="text-center">
-          <p className="text-2xl font-bold text-gray-600 mb-4">Product not found</p>
-          <button onClick={() => navigate(-1)}
-            className="bg-[#4A69E2] text-white px-6 py-3 rounded-xl font-bold hover:bg-indigo-700 transition">
+          <p className="text-xl sm:text-2xl font-bold text-gray-600 mb-4">Product not found</p>
+          <button
+            onClick={() => navigate(-1)}
+            className="bg-[#4A69E2] text-white px-6 py-3 rounded-xl font-bold hover:bg-indigo-700 transition"
+          >
             Go Back
           </button>
         </div>
@@ -72,21 +85,24 @@ const ProductDetails = () => {
     );
   }
 
-  const images = [
-    drop.image,              
-    drop.image2 || drop.image, 
-    drop.image3 || drop.image, 
-    drop.image4 || drop.image, 
+  const images = PRODUCT_IMAGES[Number(drop.id)] || [
+    drop.image,
+    drop.image,
+    drop.image,
+    drop.image,
   ];
+
   return (
     <div className="min-h-screen bg-[#E7E7E3]">
 
-      {/* Back */}
+      {/* ── Back button ── */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-2">
-        <button onClick={() => navigate(-1)}
-          className="flex items-center gap-2 text-sm font-semibold text-gray-500 hover:text-black transition">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <button
+          onClick={() => navigate(-1)}
+          className="flex items-center gap-2 text-sm font-semibold text-gray-500 hover:text-black transition"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <polyline points="15 18 9 12 15 6" />
           </svg>
           Back
@@ -98,19 +114,20 @@ const ProductDetails = () => {
 
           <div className="w-full lg:w-[48%] flex-shrink-0 flex flex-col gap-3">
 
-            <div className="bg-white rounded-2xl flex items-center justify-center
-                            p-5 sm:p-8 ring-2 ring-[#4A69E2] ring-offset-2"
+            <div
+              className="bg-white rounded-2xl flex items-center justify-center p-4 sm:p-6 lg:p-8 ring-1 ring-gray-400 ring-offset-2"
               style={{ aspectRatio: "4/3" }}
             >
               <img
                 key={activeImg}
-                src={images[activeImg]}
+                src={'/src/assets/Rectangle 9.png'}
                 alt={`${drop.name} - view ${activeImg + 1}`}
                 className="w-full h-full object-contain"
                 style={{ animation: "fadeIn 0.3s ease" }}
                 onError={(e) => { e.target.style.opacity = "0.3"; }}
               />
             </div>
+
             <div className="grid grid-cols-3 gap-2 sm:gap-3">
               {[0, 1, 2, 3]
                 .filter((i) => i !== activeImg)
@@ -124,7 +141,7 @@ const ProductDetails = () => {
                     style={{ aspectRatio: "1/1" }}
                   >
                     <img
-                      src={images[i]}
+                      src={'/src/assets/Rectangle 8.png'}
                       alt={`Thumbnail ${i + 1}`}
                       className="w-full h-full object-contain hover:scale-105 transition-transform duration-200"
                       onError={(e) => { e.target.style.opacity = "0.3"; }}
@@ -134,26 +151,28 @@ const ProductDetails = () => {
             </div>
           </div>
 
-          <div className="flex-1 min-w-0">
+          <div className="w-full lg:flex-1 min-w-0">
 
-            <span className="inline-block bg-[#4A69E2] text-white text-xs font-bold px-3 py-1 rounded-full mb-4">
+            <span className="inline-block bg-[#4A69E2] text-white text-xs font-bold px-3 py-1 rounded-full mb-3 sm:mb-4">
               New Release
             </span>
 
             <h1
-              className="font-black text-[#1a1a1a] uppercase leading-tight mb-3"
-              style={{ fontFamily: "'Arial Black', Arial, sans-serif", fontSize: "clamp(1.1rem, 2.5vw, 1.6rem)" }}
+              className="font-black text-[#1a1a1a] uppercase leading-tight mb-2 sm:mb-3"
+              style={{ fontFamily: "'Arial Black', Arial, sans-serif", fontSize: "clamp(1rem, 2.5vw, 1.6rem)" }}
             >
               {drop.name || "ADIDAS 4DFWD X PARLEY RUNNING SHOES"}
             </h1>
 
-            <p className="text-[#4A69E2] font-black mb-5"
-              style={{ fontSize: "clamp(1.3rem, 2.5vw, 1.6rem)" }}>
+            <p
+              className="text-[#4A69E2] font-black mb-4 sm:mb-5"
+              style={{ fontSize: "clamp(1.2rem, 2.5vw, 1.6rem)" }}
+            >
               ${drop.price || "125.00"}
             </p>
 
             {/* Color */}
-            <div className="mb-5">
+            <div className="mb-4 sm:mb-5">
               <p className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">COLOR</p>
               <div className="flex gap-3">
                 {COLORS.map((c, i) => (
@@ -161,7 +180,7 @@ const ProductDetails = () => {
                     key={i}
                     onClick={() => setSelectedColor(i)}
                     title={c.name}
-                    className={`w-9 h-9 rounded-full border-2 transition-all duration-200 ${
+                    className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full border-2 transition-all duration-200 ${
                       selectedColor === i
                         ? "border-[#4A69E2] scale-110 shadow-md"
                         : "border-gray-300 hover:border-gray-400"
@@ -173,7 +192,7 @@ const ProductDetails = () => {
             </div>
 
             {/* Size */}
-            <div className="mb-6">
+            <div className="mb-5 sm:mb-6">
               <div className="flex items-center justify-between mb-2">
                 <p className="text-xs font-bold uppercase tracking-widest text-gray-500">SIZE</p>
                 <button className="text-xs font-semibold text-[#4A69E2] underline underline-offset-2 hover:text-indigo-800 transition">
@@ -185,7 +204,7 @@ const ProductDetails = () => {
                   <button
                     key={s}
                     onClick={() => setSelectedSize(s)}
-                    className={`w-10 h-10 rounded-lg text-sm font-bold border-2 transition-all duration-200 ${
+                    className={`w-9 h-9 sm:w-10 sm:h-10 rounded-lg text-xs sm:text-sm font-bold border-2 transition-all duration-200 ${
                       selectedSize === s
                         ? "bg-[#1a1a1a] text-white border-[#1a1a1a] scale-105"
                         : "bg-white text-gray-700 border-gray-300 hover:border-gray-500 hover:scale-105"
@@ -197,19 +216,24 @@ const ProductDetails = () => {
               </div>
             </div>
 
+            {/* Add to cart + Wishlist */}
             <div className="flex gap-3 mb-3">
               <button
                 onClick={handleAddToCart}
                 className={`flex-1 font-bold py-3 rounded-xl active:scale-95 transition-all text-sm uppercase tracking-wider ${
-                  addedToCart ? "bg-green-600 text-white" : "bg-[#1a1a1a] text-white hover:opacity-90"
+                  addedToCart
+                    ? "bg-green-600 text-white"
+                    : "bg-[#1a1a1a] text-white hover:opacity-90"
                 }`}
               >
                 {addedToCart ? "✓ ADDED TO CART" : "ADD TO CART"}
               </button>
               <button
                 onClick={() => setWishlist((w) => !w)}
-                className={`w-12 h-12 rounded-xl border-2 flex items-center justify-center transition-all duration-200 flex-shrink-0 ${
-                  wishlist ? "bg-red-50 border-red-400" : "border-gray-300 bg-white hover:border-gray-400"
+                className={`w-11 h-11 sm:w-12 sm:h-12 rounded-xl border-2 flex items-center justify-center transition-all duration-200 flex-shrink-0 ${
+                  wishlist
+                    ? "bg-red-50 border-red-400"
+                    : "border-gray-300 bg-white hover:border-gray-400"
                 }`}
               >
                 <svg width="18" height="18" viewBox="0 0 24 24"
@@ -221,7 +245,8 @@ const ProductDetails = () => {
               </button>
             </div>
 
-            <button className="w-full bg-[#4A69E2] text-white font-bold py-3 rounded-xl hover:bg-indigo-700 active:scale-95 transition-all text-sm uppercase tracking-wider mb-6">
+            {/* Buy it now */}
+            <button className="w-full bg-[#4A69E2] text-white font-bold py-3 rounded-xl hover:bg-indigo-700 active:scale-95 transition-all text-sm uppercase tracking-wider mb-5 sm:mb-6">
               BUY IT NOW
             </button>
 
@@ -248,7 +273,6 @@ const ProductDetails = () => {
         </div>
 
         <YouMayAlsoLike />
-
       </div>
 
       <style>{`

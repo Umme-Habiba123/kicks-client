@@ -10,7 +10,7 @@ const NewDrops = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/drops")
+      .get("https://kicks-server.vercel.app/drops")
       .then((res) => setDrops(res.data))
       .catch((error) => console.log(error));
   }, []);
