@@ -3,6 +3,7 @@
 
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
+import YouMayAlsoLike from "../YouMayAlsoLike/YouMayAlsoLike";
 
 const INITIAL_ITEMS = [
   {
@@ -36,9 +37,10 @@ export default function Cart() {
   const total = subtotal + (items.length ? DELIVERY : 0);
 
   return (
-    <div className="min-h-screen bg-[#e8e6e1]">
+   <div>
+     <div className=" ]">
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-4">
+      <div className="w-9/12 mx-auto bg-[#e8e6e1 px-4 sm:px-6 lg:px-8 pt-8 pb-4">
         <p className="font-black text-[#1a1a1a] text-sm sm:text-base"
           style={{ fontFamily: "'Arial Black', Arial, sans-serif" }}>
           Saving to celebrate
@@ -48,13 +50,13 @@ export default function Cart() {
         </p>
         <p className="text-xs sm:text-sm mt-1 text-gray-600">
           <button className="underline font-semibold hover:opacity-70 transition">Join us</button>
-          {" "}or{" "}
+          {" "} or {" "}
           <button className="underline font-semibold hover:opacity-70 transition">Sign-in</button>
         </p>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        <div className="flex flex-col lg:flex-row gap-5 lg:gap-8 items-start">
+      <div className="w-9/12 mx-auto px-4 sm:px-4 lg:px-10 mt-5 sm:pb-16 lg:pb-0">
+        <div className="flex flex-col lg:flex-row gap-5 pb-5 lg:gap-8 items-start">
 
           <div className="w-full lg:flex-1">
             <div className="bg-white rounded-2xl p-5 sm:p-6 shadow-sm">
@@ -110,7 +112,6 @@ export default function Cart() {
                       <p className="text-gray-500 text-xs sm:text-sm">{item.subtitle}</p>
                       <p className="text-gray-400 text-xs mb-3">{item.color}</p>
 
-                      {/* Size + Quantity — exactly like screenshot (text + chevron) */}
                       <div className="flex flex-wrap gap-4 mb-3 items-center">
                         {/* Size */}
                         <label className="flex items-center gap-1 cursor-pointer">
@@ -189,7 +190,7 @@ export default function Cart() {
               ))}
             </div>
           </div>
-          <div className="w-full lg:w-80 xl:w-96 flex-shrink-0 lg:sticky lg:top-6">
+          <div className="w-full lg:w-80 xl:w-96 flex-shrink-0 lg:sticky lg:top-6 ">
             <div className="bg-[#e8e6e1] rounded-2xl p-5 sm:p-6">
 
               <h2 className="font-black text-[#1a1a1a] mb-5"
@@ -258,5 +259,10 @@ export default function Cart() {
         </div>
       </div>
     </div>
+
+    <div className="w-9/12 mx-auto">
+        <YouMayAlsoLike></YouMayAlsoLike>
+    </div>
+   </div>
   );
 }
