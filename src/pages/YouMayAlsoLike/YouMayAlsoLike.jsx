@@ -59,7 +59,7 @@ const YouMayAlsoLike = () => {
             fontSize: "clamp(1rem, 2.5vw, 1.4rem)",
           }}
         >
-          You may also like
+          You may also like                   
         </h2>
         <div className="flex gap-2">
           <button

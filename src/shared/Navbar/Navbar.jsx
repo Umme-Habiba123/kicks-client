@@ -1,5 +1,6 @@
 import React from "react";
 import { FiSearch, FiUser, FiShoppingCart } from "react-icons/fi"; // Feather icons
+import { Link } from "react-router";
 
 const Navbar = () => {
   return (
@@ -76,19 +77,20 @@ const Navbar = () => {
 
         <div className="navbar-center mx-auto">
           <img src="/src/assets/logo.png" alt="Logo" className="h-8 w-auto" />
-        </div>    
+        </div>
         <div className="navbar-end flex items-center space-x-1">
-      
           <button className="btn btn-ghost">
             <FiSearch className="h-5 w-5" />
-          </button>       
+          </button>
           <button className="btn btn-ghost">
             <FiUser className="h-5 w-5" />
           </button>
           <div className="relative">
-            <button className="btn btn-ghost">
-              <FiShoppingCart className="h-5 w-5" />
-            </button>
+            <Link to='/cart'>
+              <button className="btn btn-ghost">
+                <FiShoppingCart className="h-5 w-5" />
+              </button>
+            </Link>
             <span className="absolute -top-1 -right-1 text-[10px] font-bold bg-yellow-400 text-black rounded-full w-4 h-4 flex items-center justify-center">
               0
             </span>
