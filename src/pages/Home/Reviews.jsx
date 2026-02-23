@@ -73,7 +73,7 @@ export default function Reviews() {
           className="font-bold text-white uppercase tracking-widest
                      hover:opacity-90 active:scale-95 transition-all duration-200"
           style={{
-            backgroundColor: '#5B6FE8',
+            backgroundColor: '  ',
             borderRadius: '8px',
             fontSize: 'clamp(0.65rem, 1.3vw, 0.8rem)',
             padding: 'clamp(8px, 1.2vw, 12px) clamp(16px, 2.5vw, 28px)',

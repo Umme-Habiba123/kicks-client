@@ -4,6 +4,7 @@ import {
 import RootLayout from "../layouts/RootLayout";
 import Home from "../pages/Home";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import ProductDetails from "../pages/ProductDetails/ProductDetails";
 
 export const router = createBrowserRouter([
   {
@@ -14,7 +15,15 @@ export const router = createBrowserRouter([
       {
         index:true,
         Component: Home
-      }
+      },
+      {
+        path: '/product/:id',
+        Component: ProductDetails
+      },
+      {
+        path: '/product/all',
+        Component:ProductDetails
+      },
     ]
   },
 ]);
