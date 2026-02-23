@@ -1,82 +1,98 @@
 import React from "react";
+import { FiSearch, FiUser, FiShoppingCart } from "react-icons/fi"; // Feather icons
 
 const Navbar = () => {
   return (
-    <div className="w-8/12 rounded-xl mx-auto rubik-semibold pt-10"> 
-      <div className="navbar bg-base-100 shadow-sm">
+    <div className="w-9/12 mx-auto pt-6 px-5">
+      <div className="navbar bg-gray-100 shadow-sm rounded-xl px-4">
         <div className="navbar-start">
-          <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+          <div className="dropdown lg:hidden">
+            <label tabIndex={0} className="btn btn-ghost">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
+                className="h-6 w-6"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
-                {" "}
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />{" "}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               </svg>
-            </div>
+            </label>
             <ul
-              tabIndex="-1"
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              tabIndex={0}
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-gray-100 rounded-box w-52"
             >
               <li>
-                <a>Item 1</a>
+                <a>New Drops🔥</a>
               </li>
               <li>
-                <a>Parent</a>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
+                <details>
+                  <summary>Men</summary>
+                  <ul className="p-2 bg-gray-100 rounded-box">
+                    <li>
+                      <a>Men</a>
+                    </li>
+                    <li>
+                      <a>Women</a>
+                    </li>
+                  </ul>
+                </details>
               </li>
               <li>
-                <a>Item 3</a>
+                <a>Women</a>
               </li>
             </ul>
           </div>
-          <div>
-              <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-            <li>
-              <a>New Drops🔥</a>
-            </li>
-            <li>
-              <details>
-                <summary>Men</summary>
-                <ul className="p-2 bg-base-100 w-40 z-1">
-                  <li>
-                    <a>Men</a>
-                  </li>
-                  <li>
-                    <a>Women</a>
-                  </li>
-                </ul>
-              </details>
-            </li>
-            <li>
-              <a>Women</a>
-            </li>
-          </ul>
+
+          <div className="hidden lg:flex">
+            <ul className="menu menu-horizontal px-1">
+              <li>
+                <a>New Drops🔥</a>
+              </li>
+              <li>
+                <details>
+                  <summary>Men</summary>
+                  <ul className="p-2 bg-gray-100 rounded-box w-40">
+                    <li>
+                      <a>Men</a>
+                    </li>
+                    <li>
+                      <a>Women</a>
+                    </li>
+                  </ul>
+                </details>
+              </li>
+              <li>
+                <a>Women</a>
+              </li>
+            </ul>
+          </div>
         </div>
 
+        <div className="navbar-center mx-auto">
+          <img src="/src/assets/logo.png" alt="Logo" className="h-8 w-auto" />
+        </div>    
+        <div className="navbar-end flex items-center space-x-1">
+      
+          <button className="btn btn-ghost">
+            <FiSearch className="h-5 w-5" />
+          </button>       
+          <button className="btn btn-ghost">
+            <FiUser className="h-5 w-5" />
+          </button>
+          <div className="relative">
+            <button className="btn btn-ghost">
+              <FiShoppingCart className="h-5 w-5" />
+            </button>
+            <span className="absolute -top-1 -right-1 text-[10px] font-bold bg-yellow-400 text-black rounded-full w-4 h-4 flex items-center justify-center">
+              0
+            </span>
           </div>
-    
-        </div>
-        <img src="/src/assets/Group.png" alt="" />
-        <div className="navbar-end">
-          <a className="btn">Button</a>
         </div>
       </div>
     </div>
